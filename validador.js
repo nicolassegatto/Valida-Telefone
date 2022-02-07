@@ -77,11 +77,11 @@ function VALIDADOR(telefone) {
 
     //função que pega o primeiro digito após o DDD para validação.
     let numInicial = (DADOS) => {
-        return DADOS["NUMERO"].slice(2,3)
+        return DADOS["NUMERO"].slice(2, 3)
     }
     //função que pega o segundo digito para celulares (após o 9)
     let segNumInicial = (DADOS) => {
-        return DADOS["NUMERO"].slice(3,4)
+        return DADOS["NUMERO"].slice(3, 4)
     }
 
     //primeira coisa, validar se é ou nao um telefone por caracteres entre 10 e 12
@@ -90,33 +90,33 @@ function VALIDADOR(telefone) {
         if (retornoDDD(DADOS["NUMERO"], DDDBrasil)) {
             switch (DADOS["NUMERO"].slice(2, DADOS["NUMERO"].length).length) {
                 case 8:
-                    if(numInicial(DADOS) == 9 || numInicial(DADOS) == 8 || numInicial(DADOS) == 7 || numInicial(DADOS) == 6){
+                    if (numInicial(DADOS) == 9 || numInicial(DADOS) == 8 || numInicial(DADOS) == 7 || numInicial(DADOS) == 6) {
                         DADOS["RETURN"] = "Y"
-                        DADOS["DDD"] = DADOS["NUMERO"].slice(0,2)
+                        DADOS["DDD"] = DADOS["NUMERO"].slice(0, 2)
                         DADOS["TYPE"] = "CELULAR"
                         DADOS["STATUS"] = "NÚMERO RETORNADO COM SUCESSO"
-                    }else if(numInicial(DADOS) == 5 || numInicial(DADOS) == 4 || numInicial(DADOS) == 3 || numInicial(DADOS) == 2){
+                    } else if (numInicial(DADOS) == 5 || numInicial(DADOS) == 4 || numInicial(DADOS) == 3 || numInicial(DADOS) == 2) {
                         DADOS["RETURN"] = "Y"
-                        DADOS["DDD"] = DADOS["NUMERO"].slice(0,2)
+                        DADOS["DDD"] = DADOS["NUMERO"].slice(0, 2)
                         DADOS["TYPE"] = "FIXO"
                         DADOS["STATUS"] = "NÚMERO RETORNADO COM SUCESSO"
-                    }else{
+                    } else {
                         DADOS["RETURN"] = "N"
                     }
                     creatReturn(DADOS)
                     break;
                 case 9:
-                    if(numInicial(DADOS) == 9){
-                        if(segNumInicial(DADOS) == 9 || segNumInicial(DADOS) == 8 || segNumInicial(DADOS) == 7 || segNumInicial(DADOS) == 6){
+                    if (numInicial(DADOS) == 9) {
+                        if (segNumInicial(DADOS) == 9 || segNumInicial(DADOS) == 8 || segNumInicial(DADOS) == 7 || segNumInicial(DADOS) == 6) {
                             DADOS["RETURN"] = "Y"
-                            DADOS["DDD"] = DADOS["NUMERO"].slice(0,2)
+                            DADOS["DDD"] = DADOS["NUMERO"].slice(0, 2)
                             DADOS["TYPE"] = "CELULAR"
                             DADOS["STATUS"] = "NÚMERO RETORNADO COM SUCESSO"
-                        }else{
+                        } else {
                             DADOS["RETURN"] = "N"
                         }
-                    }else{
-                        DADOS["RETURN"] = "N"  
+                    } else {
+                        DADOS["RETURN"] = "N"
                     }
                     creatReturn(DADOS)
                     break;
